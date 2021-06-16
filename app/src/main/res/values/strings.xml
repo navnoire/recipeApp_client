@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Recipe Application Android</string>
+    <string name="recipe_main_image_desc">Recipe main image</string>
+    <string name="title_activity_single_recipe">SingleRecipeActivity</string>
+    <string name="title_ingredients">ИНГРЕДИЕНТЫ</string>
+    <string name="title_steps">ШАГИ</string>
+</resources>

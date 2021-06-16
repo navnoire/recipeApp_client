@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/step_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+        tools:text="Теперь к грибам добавляем наш томленый лук. Я перекладываю лук к грибам при помощи специальной ложки с отверстиями, чтобы не добавлять в жюльен слишком много масла." />
+
+    <ImageView
+        android:id="@+id/step_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        tools:src="@drawable/placeholder"/>
+</LinearLayout>

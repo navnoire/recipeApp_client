@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recipe_details_flow_navigation"
+    app:startDestination="@id/recipeSummaryFragment">
+    <argument
+        android:name="recipeId"
+        app:argType="integer" />
+    <argument
+        android:name="recipeTitle"
+        app:argType="string" />
+    <argument
+        android:name="imageUrl"
+        app:argType="string" />
+    <fragment
+        android:id="@+id/recipeSummaryFragment"
+        android:name="info.navnoire.recipeapp_client.ui.fragments.recipe.RecipeSummaryFragment"
+        android:label="RecipeSummaryFragment">
+        <action
+            android:id="@+id/action_recipeSummaryFragment_to_recipeStepsFragment"
+            app:destination="@id/recipeStepsFragment" />
+        <action
+            android:id="@+id/action_recipeSummaryFragment_to_recipeIngredientsFragment"
+            app:destination="@id/recipeIngredientsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeStepsFragment"
+        android:name="info.navnoire.recipeapp_client.ui.fragments.recipe.RecipeStepsFragment"
+        android:label="fragment_recipe_steps"
+        tools:layout="@layout/fragment_recipe_steps" />
+    <fragment
+        android:id="@+id/recipeIngredientsFragment"
+        android:name="info.navnoire.recipeapp_client.ui.fragments.recipe.RecipeIngredientsFragment"
+        android:label="fragment_recipe_ingredients"
+        tools:layout="@layout/fragment_recipe_ingredients" />
+</navigation>
