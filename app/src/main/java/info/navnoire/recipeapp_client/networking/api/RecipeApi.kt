@@ -1,12 +1,14 @@
-package info.navnoire.recipeapp_client.networking
+package info.navnoire.recipeapp_client.networking.api
 
+import info.navnoire.recipeapp_client.networking.response.RecipeFullData
+import info.navnoire.recipeapp_client.networking.response.RecipePageResponse
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface RecipeService {
+interface RecipeApi {
     @GET(value = "recipe")
     suspend fun fetchAllRecipeList(
         @Query(value = "page") pageNumber: Int
@@ -21,11 +23,16 @@ interface RecipeService {
     @GET(value = "recipe/{id}")
     suspend fun fetchSingleRecipe(
         @Path("id") recipeId : Int
-    ) : Response<RecipeFullData>
+    ) : RecipeFullData
 
     @GET(value = "recipe/search/{title}")
     suspend fun fetchRecipesByName(
         @Path("title") searchString : String,
         @Query(value = "page") pageNumber: Int
     ) : Response<RecipePageResponse>
+
+    @GET(value = "recipe/{id}")
+    fun fetchSingleRecipe2(
+        @Path("id") recipeId : Int
+    ) : Call<RecipeFullData>
 }

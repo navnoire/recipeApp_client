@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import info.navnoire.recipeapp_client.R
 import info.navnoire.recipeapp_client.databinding.FragmentRecipeIngredientsBinding
+import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.ui.adapters.IngredientListAdapter
 
 class RecipeIngredientsFragment : Fragment() {
@@ -20,7 +21,7 @@ class RecipeIngredientsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Log.i("INGREDIENTS FRAGMENT","My parent activity is $activity")
         binding = FragmentRecipeIngredientsBinding.inflate(inflater, container, false)
         return binding.root
@@ -29,8 +30,13 @@ class RecipeIngredientsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.singleRecipeData.observe(viewLifecycleOwner, {
-            val adapter = IngredientListAdapter(it.ingredients)
-            binding.ingredientList.adapter = adapter
+            when(it) {
+                is Result.Success -> {
+                    val adapter = IngredientListAdapter(it.data.ingredients)
+                    binding.ingredientList.adapter = adapter
+                }
+                else -> {}
+            }
         })
 
     }

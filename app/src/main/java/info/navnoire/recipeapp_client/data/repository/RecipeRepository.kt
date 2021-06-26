@@ -1,4 +1,4 @@
-package info.navnoire.recipeapp_client.data.source.remote
+package info.navnoire.recipeapp_client.data.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -6,32 +6,37 @@ import androidx.paging.PagingData
 import info.navnoire.recipeapp_client.data.RecipeFullModel
 import info.navnoire.recipeapp_client.data.RecipeShortModel
 import info.navnoire.recipeapp_client.networking.RetrofitClient
-import info.navnoire.recipeapp_client.networking.RecipeService
+import info.navnoire.recipeapp_client.networking.api.RecipeApi
 import kotlinx.coroutines.flow.Flow
-import info.navnoire.recipeapp_client.data.Result
+import info.navnoire.recipeapp_client.networking.Result
+import info.navnoire.recipeapp_client.data.source.RecipeListPagingSource
+import info.navnoire.recipeapp_client.data.source.SingleRecipeSource
+import info.navnoire.recipeapp_client.networking.response.RecipeFullData
+import retrofit2.Callback
+
 
 class RecipeRepository {
-    private val recipeService = RetrofitClient.getClient().create(RecipeService::class.java)
+    private val recipeApi = RetrofitClient.getClient().create(RecipeApi::class.java)
 
     fun fetchAllRecipesList(): Flow<PagingData<RecipeShortModel>> {
         return Pager(PagingConfig(pageSize = 30, enablePlaceholders = false)) {
-            RecipeListPagingSource(recipeService)
+            RecipeListPagingSource(recipeApi)
         }.flow
     }
 
     fun fetchRecipesByCategory(categoryId : Int) : Flow<PagingData<RecipeShortModel>> {
         return Pager(PagingConfig(pageSize = 30, enablePlaceholders = false)) {
-            RecipeListPagingSource(recipeService, categoryId = categoryId)
+            RecipeListPagingSource(recipeApi, categoryId = categoryId)
         }.flow
     }
 
     fun fetchRecipesBySearchString(searchString : String) : Flow<PagingData<RecipeShortModel>> {
         return Pager(PagingConfig(pageSize = 30, enablePlaceholders = false)) {
-            RecipeListPagingSource(recipeService, searchString = searchString)
+            RecipeListPagingSource(recipeApi, searchString = searchString)
         }.flow
     }
 
     suspend fun fetchSingleRecipe(recipeId : Int): Result<RecipeFullModel> {
-        return SingleRecipeSource(recipeService).load(recipeId)
+        return SingleRecipeSource(recipeApi).load(recipeId)
     }
 }

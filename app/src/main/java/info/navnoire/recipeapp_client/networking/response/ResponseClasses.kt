@@ -1,4 +1,4 @@
-package info.navnoire.recipeapp_client.networking
+package info.navnoire.recipeapp_client.networking.response
 
 data class RecipePageResponse(
     val recipes: List<RecipeShortData>,
@@ -21,3 +21,4 @@ data class IngredientData(val name: String, val amount: String, val type: Int)
 data class StepData(val id: Int, val text: String, val imageExists: Boolean)
 
 data class CategoryData(val id: Int, val title: String, val hasChild: Boolean)
+

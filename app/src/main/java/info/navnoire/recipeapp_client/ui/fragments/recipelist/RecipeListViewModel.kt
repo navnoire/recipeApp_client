@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import info.navnoire.recipeapp_client.data.RecipeShortModel
-import info.navnoire.recipeapp_client.data.source.remote.RecipeRepository
+import info.navnoire.recipeapp_client.data.repository.RecipeRepository
 import kotlinx.coroutines.flow.Flow
 import info.navnoire.recipeapp_client.ui.fragments.recipelist.RecipeListFilterType.ALL_RECIPES
 import info.navnoire.recipeapp_client.ui.fragments.recipelist.RecipeListFilterType.BY_CATEGORY

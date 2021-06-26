@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.categorylist.CategoryListFragment">
+    tools:context=".ui.fragments.categorylist.CategoryListFragment"
+    >
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/category_list"
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:divider="@null"
         android:dividerHeight="0dp"
+        android:layoutAnimation="@anim/layout_animation"
         tools:listitem="@layout/item_category" />
 
 </FrameLayout>

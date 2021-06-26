@@ -23,17 +23,15 @@
             android:defaultValue="ALL_RECIPES" />
         <action
             android:id="@+id/action_recipeListFragment_to_recipeDetailsActivity"
-            app:destination="@id/recipeDetailsActivity" />
+            app:destination="@id/recipeDetailsActivity"
+            app:popUpTo="@id/main_flow_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/categoryListFragment"
         android:name="info.navnoire.recipeapp_client.ui.fragments.categorylist.CategoryListFragment"
         android:label="category_list_fragment"
         tools:layout="@layout/fragment_category_list">
-        <argument
-            android:name="categoryId"
-            android:defaultValue="0"
-            app:argType="integer" />
         <action
             android:id="@+id/action_categoryListFragment_self"
             app:destination="@id/categoryListFragment"
@@ -45,8 +43,8 @@
         <action
             android:id="@+id/action_categoryListFragment_to_recipeListFragment"
             app:destination="@id/recipeListFragment"
-            app:enterAnim="@anim/slide_up">
-        </action>
+            app:enterAnim="@anim/slide_up"
+            app:popUpTo="@id/categoryListFragment" />
     </fragment>
     <activity
         android:id="@+id/recipeDetailsActivity"

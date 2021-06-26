@@ -1,15 +1,15 @@
-package info.navnoire.recipeapp_client.data.source.remote
+package info.navnoire.recipeapp_client.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.squareup.picasso.Picasso
 import info.navnoire.recipeapp_client.data.RecipeShortModel
-import info.navnoire.recipeapp_client.networking.RecipeService
+import info.navnoire.recipeapp_client.networking.api.RecipeApi
 import retrofit2.HttpException
 import java.io.IOException
 
 class RecipeListPagingSource(
-    private val recipeService: RecipeService,
+    private val recipeApi: RecipeApi,
     private val categoryId: Int = -1,
     val searchString: String = ""
 ) :
@@ -19,13 +19,13 @@ class RecipeListPagingSource(
             val pageNumber = params.key ?: 0
             val response = when (categoryId) {
                 -1 -> {
-                    if (searchString.isEmpty()) recipeService.fetchAllRecipeList(pageNumber = pageNumber) else
-                        recipeService.fetchRecipesByName(
+                    if (searchString.isEmpty()) recipeApi.fetchAllRecipeList(pageNumber = pageNumber) else
+                        recipeApi.fetchRecipesByName(
                             pageNumber = pageNumber,
                             searchString = searchString
                         )
                 }
-                else -> recipeService.fetchRecipesByCategory(
+                else -> recipeApi.fetchRecipesByCategory(
                     pageNumber = pageNumber,
                     categoryId = categoryId
                 )

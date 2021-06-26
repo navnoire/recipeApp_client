@@ -17,6 +17,8 @@ import info.navnoire.recipeapp_client.ui.adapters.RecipeListPagingAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+private const val TAG = "RecipeListFragment"
+
 class RecipeListFragment : Fragment() {
     private lateinit var binding: FragmentRecipeListBinding
     private val recipeListAdapter = RecipeListPagingAdapter()
@@ -47,7 +49,7 @@ class RecipeListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRecipeListBinding.inflate(inflater, container, false)
         return binding.root
     }

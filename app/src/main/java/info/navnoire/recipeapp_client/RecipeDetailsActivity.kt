@@ -3,9 +3,9 @@ package info.navnoire.recipeapp_client
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navArgs
+import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.ui.fragments.recipe.RecipeDetailsViewModel
 
 class RecipeDetailsActivity : AppCompatActivity() {
@@ -19,8 +19,11 @@ class RecipeDetailsActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.recipe_nav_host_container) as NavHostFragment
         navHostFragment.navController.setGraph(R.navigation.recipe_details_flow_navigation, args.toBundle())
 
-        viewModel.getRecipe(args.recipeId).observe(this, Observer {
-            viewModel.warmImageCache(it)
+        viewModel.loadRecipe(args.recipeId)
+        viewModel.singleRecipeData.observe(this, {
+            if(it is Result.Success) {
+                viewModel.warmImageCache(it.data)
+            }
         })
     }
 

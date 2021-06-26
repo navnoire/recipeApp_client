@@ -10,7 +10,6 @@ import androidx.navigation.fragment.navArgs
 import com.squareup.picasso.Picasso
 import info.navnoire.recipeapp_client.R
 import info.navnoire.recipeapp_client.RecipeDetailsFlowNavigationArgs
-import info.navnoire.recipeapp_client.databinding.FragmentRecipeStepsBinding
 import info.navnoire.recipeapp_client.databinding.FragmentRecipeSummaryBinding
 
 class RecipeSummaryFragment : Fragment() {
