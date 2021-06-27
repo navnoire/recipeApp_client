@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import info.navnoire.recipeapp_client.R
 import info.navnoire.recipeapp_client.data.StepModel
 import info.navnoire.recipeapp_client.databinding.ItemStepBinding
 

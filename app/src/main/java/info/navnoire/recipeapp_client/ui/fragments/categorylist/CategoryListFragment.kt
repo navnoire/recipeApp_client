@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import info.navnoire.recipeapp_client.databinding.FragmentCategoryListBinding
 import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.ui.adapters.CategoryListAdapter
+import info.navnoire.recipeapp_client.utils.visible
 
 class CategoryListFragment : Fragment() {
 
@@ -30,16 +31,22 @@ class CategoryListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.categoryListProgressbar.visible(true)
         binding.categoryList.apply {
             layoutManager = LinearLayoutManager(context)
             viewModel.categoryListData.observe(viewLifecycleOwner, {
+                binding.categoryListProgressbar.visible(it is Result.Loading)
                 when (it) {
                     is Result.Success -> {
                         categoryListAdapter.submitList(it.data)
                         binding.categoryList.scheduleLayoutAnimation()
                     }
-                    is Result.Error -> Toast.makeText(context, it.errorCode.toString(), Toast.LENGTH_LONG).show()
-                    is Result.Loading -> Toast.makeText(context, "Still loading", Toast.LENGTH_SHORT).show()
+                    is Result.Error -> Toast.makeText(
+                        context,
+                        "Error: ${it.errorCode.toString()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    is Result.Loading ->null
                 }
             })
             adapter = categoryListAdapter

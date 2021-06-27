@@ -8,7 +8,7 @@ data class IngredientModel(val name : String, val amount : String, val type : In
 
 data class StepModel(val id : Int, val text : String, val stepImageUrl:String?)
 
-data class CategoryModel(val id : Int, val title : String, val hasChild : Boolean)
+data class CategoryModel(val id : Int, val parent : Int, val title : String, val hasChild : Boolean)
 
 enum class IngredientType {
         ORDINARY, HEADER

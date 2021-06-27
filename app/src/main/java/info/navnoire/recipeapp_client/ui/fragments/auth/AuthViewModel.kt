@@ -10,6 +10,7 @@ import info.navnoire.recipeapp_client.data.repository.UserPreferencesRepository
 import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.networking.request.SigninRequest
 import info.navnoire.recipeapp_client.networking.response.TokenResponse
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

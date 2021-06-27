@@ -22,7 +22,6 @@ class RecipeIngredientsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.i("INGREDIENTS FRAGMENT","My parent activity is $activity")
         binding = FragmentRecipeIngredientsBinding.inflate(inflater, container, false)
         return binding.root
     }

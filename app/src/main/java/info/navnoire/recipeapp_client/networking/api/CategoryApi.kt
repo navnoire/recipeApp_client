@@ -11,7 +11,6 @@ interface CategoryApi {
 
     @GET(value = "category/child/{id}")
     suspend fun fetchChildCategories(
-        @Path(value = "id") parentId: Int,
-        @Header(value = "Authorization") token : String
+        @Path(value = "id") parentId: Int
     ): List<CategoryData>
 }

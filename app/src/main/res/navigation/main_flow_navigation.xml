@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_flow_navigation"
     app:startDestination="@id/categoryListFragment">
+    <argument
+        android:name="categoryId"
+        app:argType="integer"
+        android:defaultValue="0" />
     <fragment
         android:id="@+id/recipeListFragment"
         android:name="info.navnoire.recipeapp_client.ui.fragments.recipelist.RecipeListFragment"
@@ -23,9 +27,7 @@
             android:defaultValue="ALL_RECIPES" />
         <action
             android:id="@+id/action_recipeListFragment_to_recipeDetailsActivity"
-            app:destination="@id/recipeDetailsActivity"
-            app:popUpTo="@id/main_flow_navigation"
-            app:popUpToInclusive="true" />
+            app:destination="@id/recipeDetailsActivity" />
     </fragment>
     <fragment
         android:id="@+id/categoryListFragment"
@@ -33,18 +35,20 @@
         android:label="category_list_fragment"
         tools:layout="@layout/fragment_category_list">
         <action
-            android:id="@+id/action_categoryListFragment_self"
-            app:destination="@id/categoryListFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right">
-        </action>
-        <action
             android:id="@+id/action_categoryListFragment_to_recipeListFragment"
             app:destination="@id/recipeListFragment"
-            app:enterAnim="@anim/slide_up"
-            app:popUpTo="@id/categoryListFragment" />
+            app:enterAnim="@anim/slide_up" />
+        <argument
+            android:name="categoryId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_categoryListFragment_self"
+            app:destination="@id/categoryListFragment" >
+            <argument
+                android:name="categoryId"
+                android:defaultValue="0" />
+        </action>
     </fragment>
     <activity
         android:id="@+id/recipeDetailsActivity"

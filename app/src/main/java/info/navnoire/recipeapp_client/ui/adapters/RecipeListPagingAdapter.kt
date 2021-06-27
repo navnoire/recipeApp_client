@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import info.navnoire.recipeapp_client.R
 import info.navnoire.recipeapp_client.data.RecipeShortModel
 import info.navnoire.recipeapp_client.databinding.ItemRecipeCardBinding
 import info.navnoire.recipeapp_client.utils.DiffUtilCallBack
@@ -30,6 +31,7 @@ class RecipeListPagingAdapter(private val itemClick: (RecipeShortModel) -> Unit)
                 singleRecipeTitle.text = recipe.title
                 Picasso.get()
                     .load(recipe.main_image_url)
+                    .placeholder(R.drawable.placeholder)
                     .into(recipeIcon)
                 itemView.setOnClickListener { itemClick(recipe) }
             }

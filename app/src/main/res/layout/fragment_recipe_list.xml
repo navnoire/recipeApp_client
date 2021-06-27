@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.recipelist.RecipeListFragment">
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recipe_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp"
-        android:background="@color/recipe_list_bg"
         tools:listitem="@layout/item_recipe_card"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layoutAnimation="@anim/recipelist_animation"
         app:spanCount="2"/>
 
 </FrameLayout>
