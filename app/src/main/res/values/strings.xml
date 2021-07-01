@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Cookbook</string>
     <string name="recipe_main_image_desc">Recipe main image</string>
-    <string name="title_ingredients">ИНГРЕДИЕНТЫ</string>
-    <string name="title_steps">ШАГИ</string>
+    <string name="title_ingredients">Ингредиенты</string>
+    <string name="title_steps">Шаги</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">email</string>
@@ -16,4 +16,8 @@
     <string name="welcome">"Welcome!"</string>
     <string name="don_t_have_an_account_register_now">Don`t have an account? <b>Register Now</b></string>
     <string name="already_have_an_account_login_now">Already have an account? <b>Login Now</b></string>
+
+    <!--Strings related to error handling -->
+    <string name="text_retry">Retry</string>
+    <string name="error_message">Something went wrong.</string>
 </resources>

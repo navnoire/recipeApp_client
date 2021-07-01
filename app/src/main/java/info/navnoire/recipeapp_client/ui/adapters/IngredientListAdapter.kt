@@ -8,9 +8,8 @@ import android.widget.TextView
 import info.navnoire.recipeapp_client.R
 import info.navnoire.recipeapp_client.data.IngredientModel
 import info.navnoire.recipeapp_client.data.IngredientType
-import info.navnoire.recipeapp_client.databinding.ItemIngredientRegularBinding
 
-class IngredientListAdapter(val list : List<IngredientModel>) :
+class IngredientListAdapter(private val list : List<IngredientModel>) :
     BaseAdapter() {
 
     override fun getViewTypeCount(): Int = IngredientType.values().size

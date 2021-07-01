@@ -42,7 +42,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -52,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            style="@style/ButtonPrimary"
             android:text="@string/title_ingredients" />
 
         <com.google.android.material.button.MaterialButton
@@ -59,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            style="@style/ButtonPrimary"
             android:text="@string/title_steps" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

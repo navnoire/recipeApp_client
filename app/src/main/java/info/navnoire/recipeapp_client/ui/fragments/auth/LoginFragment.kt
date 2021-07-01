@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import info.navnoire.recipeapp_client.databinding.FragmentLoginBinding
 import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.utils.enable
+import info.navnoire.recipeapp_client.utils.handleApiError
 import info.navnoire.recipeapp_client.utils.visible
 import kotlinx.coroutines.launch
 
@@ -45,11 +46,9 @@ class LoginFragment : Fragment() {
                     }
                 }
                 is Result.Error -> {
-                    Toast.makeText(requireContext(), "Login Failed", Toast.LENGTH_LONG).show()
+                    handleApiError(it)
                 }
-                is Result.Loading -> {
-
-                }
+                is Result.Loading -> {}
             }
         })
         binding.editTextPassword.addTextChangedListener {

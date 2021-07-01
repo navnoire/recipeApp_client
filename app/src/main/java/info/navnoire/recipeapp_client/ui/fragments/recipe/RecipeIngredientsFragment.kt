@@ -12,6 +12,7 @@ import info.navnoire.recipeapp_client.R
 import info.navnoire.recipeapp_client.databinding.FragmentRecipeIngredientsBinding
 import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.ui.adapters.IngredientListAdapter
+import info.navnoire.recipeapp_client.utils.handleApiError
 
 class RecipeIngredientsFragment : Fragment() {
     private val viewModel : RecipeDetailsViewModel by activityViewModels()
@@ -34,7 +35,10 @@ class RecipeIngredientsFragment : Fragment() {
                     val adapter = IngredientListAdapter(it.data.ingredients)
                     binding.ingredientList.adapter = adapter
                 }
-                else -> {}
+                is Result.Error -> {
+                    handleApiError(it){viewModel.loadRecipe(viewModel.currentRecipeId.value?:2)}
+                }
+                is Result.Loading -> {}
             }
         })
 

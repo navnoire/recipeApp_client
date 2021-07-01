@@ -24,6 +24,11 @@ class RecipeListPagingAdapter(private val itemClick: (RecipeShortModel) -> Unit)
         return RecipeListViewHolder(binding)
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (position == itemCount) 2 else 1
+
+    }
+
     class RecipeListViewHolder(private val binding: ItemRecipeCardBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bindRecipe(recipe: RecipeShortModel, itemClick: (RecipeShortModel) -> Unit) {

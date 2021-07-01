@@ -7,7 +7,6 @@ import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import info.navnoire.recipeapp_client.data.RecipeShortModel
 import info.navnoire.recipeapp_client.data.repository.RecipeRepository
-import info.navnoire.recipeapp_client.data.repository.UserPreferencesRepository
 import info.navnoire.recipeapp_client.ui.fragments.recipelist.RecipeListFilterType.*
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

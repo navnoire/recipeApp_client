@@ -29,16 +29,18 @@ class TokenAuthenticator @Inject constructor(
                         userPreferencesRepository.updateAccessToken(
                             tokenResponse.data.accessToken,
                         )
+                        userPreferencesRepository.updateRefreshToken(
+                            tokenResponse.data.refreshToken
+                        )
                         response.request.newBuilder()
                             .header("Authorization", "Bearer ${tokenResponse.data.accessToken}")
                             .build()
                     }
                     //todo: очистить преференсы, перелогинить пользователя, рефреш токен истёк
-                    is Result.Error -> {
+                    else -> {
                         userPreferencesRepository.clear()
                         null
                     }
-                    else -> null
                 }
             }
         }

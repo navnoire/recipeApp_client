@@ -21,9 +21,7 @@ class RetrofitClient {
         fun getOkhttpClient(authenticator: Authenticator? = null): OkHttpClient {
             return OkHttpClient.Builder()
                 .addInterceptor { chain ->
-                    chain.proceed(chain.request().newBuilder().also {
-                        it.addHeader("Accept", "application/json")
-                    }.build())
+                    chain.proceed(chain.request().newBuilder().build())
                 }.also { client ->
                     authenticator?.let { client.authenticator(it) }
                 }.build()

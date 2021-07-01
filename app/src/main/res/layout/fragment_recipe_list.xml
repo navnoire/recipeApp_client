@@ -12,7 +12,6 @@
         android:padding="5dp"
         tools:listitem="@layout/item_recipe_card"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:layoutAnimation="@anim/recipelist_animation"
         app:spanCount="2"/>
 
 </FrameLayout>

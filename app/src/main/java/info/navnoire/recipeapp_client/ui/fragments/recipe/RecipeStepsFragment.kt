@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import info.navnoire.recipeapp_client.databinding.FragmentRecipeStepsBinding
 import info.navnoire.recipeapp_client.networking.Result
 import info.navnoire.recipeapp_client.ui.adapters.StepListAdapter
+import info.navnoire.recipeapp_client.utils.handleApiError
 
 class RecipeStepsFragment : Fragment() {
     private val viewModel by activityViewModels<RecipeDetailsViewModel>()
@@ -32,8 +33,10 @@ class RecipeStepsFragment : Fragment() {
                     val adapter = StepListAdapter(it.data.steps)
                     binding.stepsList.adapter = adapter
                 }
-                else -> {
+                is Result.Error -> {
+                    handleApiError(it){viewModel.loadRecipe(viewModel.currentRecipeId.value?:2)}
                 }
+                is Result.Loading -> {}
             }
         })
     }

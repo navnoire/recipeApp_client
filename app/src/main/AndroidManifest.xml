@@ -3,6 +3,7 @@
     package="info.navnoire.recipeapp_client">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.screen.portrait"/>
 
     <application
         android:allowBackup="true"
@@ -13,14 +14,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecipeApp_client">
-        <activity android:name=".CategoryActivity">
+        <activity android:name=".CategoryActivity"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AuthActivity"/>
-        <activity android:name=".RecipeDetailsActivity" />
+        <activity android:name=".AuthActivity"
+            android:screenOrientation="sensorPortrait"/>
+        <activity android:name=".RecipeDetailsActivity"
+            android:screenOrientation="sensorPortrait"/>
     </application>
 
 </manifest>

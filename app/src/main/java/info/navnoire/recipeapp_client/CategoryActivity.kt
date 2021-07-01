@@ -2,6 +2,7 @@ package info.navnoire.recipeapp_client
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
@@ -38,14 +39,15 @@ class CategoryActivity : AppCompatActivity() {
                     viewModel.getCategoryList(model.id)
                 }
             } else {
+                val navController = findNavController(R.id.main_nav_host_container)
                 title = model.title
                 val bundle = bundleOf(
                     "categoryId" to model.id,
                     "filterType" to RecipeListFilterType.BY_CATEGORY,
                 )
                 findNavController(R.id.main_nav_host_container).navigate(
-                    R.id.action_categoryListFragment_to_recipeListFragment,
-                    bundle,
+                    R.id.action_global_recipeListFragment,
+                    bundle
                 )
             }
         })

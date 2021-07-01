@@ -2,7 +2,6 @@ package info.navnoire.recipeapp_client.networking.api
 
 import info.navnoire.recipeapp_client.networking.response.RecipeFullData
 import info.navnoire.recipeapp_client.networking.response.RecipePageResponse
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -30,9 +29,4 @@ interface RecipeApi {
         @Path("title") searchString : String,
         @Query(value = "page") pageNumber: Int
     ) : Response<RecipePageResponse>
-
-    @GET(value = "recipe/{id}")
-    fun fetchSingleRecipe2(
-        @Path("id") recipeId : Int
-    ) : Call<RecipeFullData>
 }

@@ -18,7 +18,12 @@ class RecipeDetailsViewModel @Inject constructor(private val repository: RecipeR
     val singleRecipeData: LiveData<Result<RecipeFullModel>>
         get() = _singleRecipeData
 
+    private val _currentRecipeId : MutableLiveData<Int> = MutableLiveData()
+    val currentRecipeId : LiveData<Int>
+    get() = _currentRecipeId
+
     fun loadRecipe(recipeId: Int)  = viewModelScope.launch{
+        _currentRecipeId.value = recipeId
         _singleRecipeData.value = Result.Loading
         _singleRecipeData.value = repository.fetchSingleRecipe(recipeId = recipeId)
     }
